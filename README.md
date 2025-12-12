@@ -1,19 +1,20 @@
 NanoMatch-Ultra-Low-Latency-Matching-Engine
 
-Description:
-An ultra-low-latency C++ Matching Engine designed for high-frequency trading. It features:
+An ultra-low-latency C++ Matching Engine designed for high-frequency trading.
 
-Lock-free SPSC queue for fast inter-thread communication.
+This engine features:
 
-Cache-optimized order book for minimal memory access latency.
+Lock-free SPSC queue for fast inter-thread communication
 
-Custom memory pool to avoid dynamic allocation during runtime.
+Cache-optimized order book for minimal memory access latency
 
-p99 latency instrumentation to monitor performance.
+Custom memory pool to avoid dynamic allocation during runtime
 
-Deterministic performance under high load, achieving nanosecond-level throughput.
+p99 latency instrumentation to monitor performance
 
-This engine is designed for real-time financial systems and low-latency trading simulations.
+Deterministic performance under high load, achieving nanosecond-level throughput
+
+Built for real-time financial systems and low-latency trading simulations.
 
 Project Structure
 NanoMatch-Ultra-Low-Latency-Matching-Engine/
@@ -29,17 +30,17 @@ NanoMatch-Ultra-Low-Latency-Matching-Engine/
 
 Prerequisites
 
-C++17 or later compiler (GCC/Clang/MSVC).
+C++17 or later (GCC, Clang, or MSVC)
 
-CMake ≥ 3.15.
+CMake ≥ 3.15
 
-Linux or Windows (Windows requires Visual Studio with CMake support).
+Linux or Windows (Windows requires Visual Studio with CMake support)
 
-Optional: make for Linux/macOS.
+Optional: make for Linux/macOS
 
 Build Instructions
 
-Open a terminal or PowerShell.
+Open a terminal or PowerShell
 
 Navigate to the project folder:
 
@@ -59,35 +60,39 @@ cmake ..
 
 Build the project:
 
-On Linux/macOS:
+Linux/macOS:
 
 make -j
 
 
-On Windows (with Visual Studio):
+Windows (Visual Studio):
 
 cmake --build . --config Release
 
 
-The executable will be generated (e.g., ./hft_engine on Linux/macOS or hft_engine.exe on Windows).
+The executable will be generated as:
 
-Run the Engine
+./hft_engine on Linux/macOS
+
+hft_engine.exe on Windows
+
+Running the Engine
 ./hft_engine
 
 
-The engine prints periodic latency stats.
+Prints periodic latency stats
 
-Press Ctrl+C to stop the program.
+Press Ctrl+C to stop the program
 
 Features
 
-Lock-free SPSC Queue: High-throughput, minimal contention.
+Lock-free SPSC Queue: High-throughput, minimal contention
 
-Memory Pool: No dynamic allocation during runtime.
+Memory Pool: Avoids dynamic memory allocation at runtime
 
-Cache-optimized Order Book: Reduces cache misses for faster processing.
+Cache-optimized Order Book: Minimizes cache misses for faster processing
 
-p99 Latency Tracker: Monitors 99th percentile latency for critical operations.
+p99 Latency Tracker: Monitors 99th percentile latency
 
 Example Output
 Throughput: 1,200,000 ops/sec
@@ -96,17 +101,17 @@ Average Latency: 200 ns
 
 Contributing
 
-Fork the repository.
+Fork the repository
 
 Create a new branch for your feature/fix:
 
 git checkout -b feature/my-feature
 
 
-Commit your changes and push:
+Commit and push your changes:
 
 git commit -am "Add feature XYZ"
 git push origin feature/my-feature
 
 
-Open a pull request.
+Open a Pull Request
