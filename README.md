@@ -1,117 +1,83 @@
-NanoMatch-Ultra-Low-Latency-Matching-Engine
+# 🚀 NanoMatch: Ultra-Low-Latency Matching Engine
 
-An ultra-low-latency C++ Matching Engine designed for high-frequency trading.
+An ultra-low-latency C++ Matching Engine designed for high-frequency trading (HFT). This prototype emphasizes deterministic performance, memory efficiency, and advanced concurrency techniques.
 
-This engine features:
+## ✨ Key Features & Performance
 
-Lock-free SPSC queue for fast inter-thread communication
+This engine is built on fundamental low-latency principles, ensuring predictable, nanosecond-level throughput:
 
-Cache-optimized order book for minimal memory access latency
+| Feature | Low-Latency Technique | Impact |
+| :--- | :--- | :--- |
+| **Lock-Free SPSC Queue** | `std::atomic` with explicit memory ordering | High-throughput, minimal contention inter-thread communication. |
+| **Custom Memory Pool** | CAS-based Lock-Free Stack (MPMC-Safe) | Avoids non-deterministic heap allocation (`malloc`/`new`) during runtime. |
+| **Cache-Optimized Order Book** | Price-Level Arrays with `alignas(64)` | Minimizes cache misses; provides fast $\mathbf{O(1)}$ Best Bid/Offer (BBO) lookup. |
+| **p99 Latency Instrumentation** | Integrated `LatencyTracker` | Monitors and reports **tail latency** (p95, p99, p99.9) for the full order lifecycle. |
 
-Custom memory pool to avoid dynamic allocation during runtime
-
-p99 latency instrumentation to monitor performance
-
-Deterministic performance under high load, achieving nanosecond-level throughput
-
-Built for real-time financial systems and low-latency trading simulations.
-
-Project Structure
-NanoMatch-Ultra-Low-Latency-Matching-Engine/
-├─ include/
-│  ├─ order.hpp
-│  ├─ spsc_ring.hpp
-│  ├─ lockfree_pool.hpp
-│  ├─ latency_tracker.hpp
-│  └─ order_book.hpp
-├─ src/
-│  └─ main.cpp
-└─ CMakeLists.txt
-
-Prerequisites
-
-C++17 or later (GCC, Clang, or MSVC)
-
-CMake ≥ 3.15
-
-Linux or Windows (Windows requires Visual Studio with CMake support)
-
-Optional: make for Linux/macOS
-
-Build Instructions
-
-Open terminal / PowerShell
-
-Navigate to project folder:
-
-cd NanoMatch-Ultra-Low-Latency-Matching-Engine
+## 📁 Project Structure
 
 
-Create a build directory:
+## ⚙️ Prerequisites
 
-mkdir build
-cd build
+* **C++ Compiler:** C++17 or later (GCC 10+, Clang 10+, or MSVC).
+* **Build System:** CMake $\ge$ 3.15.
 
+## 🏗️ Build Instructions
 
-Generate build files with CMake:
+Follow these steps from the root directory of the repository:
 
-cmake ..
+1.  **Navigate to the project folder:**
+    ```bash
+    cd NanoMatch-Ultra-Low-Latency-Matching-Engine
+    ```
+2.  **Create and enter the build directory:**
+    ```bash
+    mkdir build
+    cd build
+    ```
+3.  **Generate build files with CMake (includes high optimization flags):**
+    ```bash
+    cmake ..
+    ```
+4.  **Build the project:**
+    * **Linux/macOS:**
+        ```bash
+        make -j
+        ```
+    * **Windows (Visual Studio):**
+        ```bash
+        cmake --build . --config Release
+        ```
 
+## ▶️ Run the Engine
 
-Build the project:
+Execute the generated binary:
 
-Linux/macOS:
+| OS | Command |
+| :--- | :--- |
+| **Linux/macOS** | `./hft_engine` |
+| **Windows** | `.\Release\hft_engine.exe` (or similar path) |
 
-make -j
+The engine runs a simulated workload, printing periodic latency statistics. Press **`Ctrl+C`** to gracefully stop the execution and print the final latency report.
 
+### 📊 Example Output
 
-Windows (Visual Studio):
-
-cmake --build . --config Release
-
-
-The executable will be:
-
-./hft_engine on Linux/macOS
-
-hft_engine.exe on Windows
-
-Run the Engine
-./hft_engine
-
-
-Prints periodic latency stats
-
-Press Ctrl+C to stop
-
-Features
-
-Lock-free SPSC Queue: High-throughput, minimal contention
-
-Memory Pool: Avoids dynamic memory allocation at runtime
-
-Cache-optimized Order Book: Minimizes cache misses for faster processing
-
-p99 Latency Tracker: Monitors 99th percentile latency
-
-Example Output
-Throughput: 1,200,000 ops/sec
-p99 Latency: 350 ns
-Average Latency: 200 ns
-
-Contributing
-
-Fork the repository
-
-Create a new branch:
-
-git checkout -b feature/my-feature
+The output demonstrates the engine's ability to maintain low tail latency under continuous load:
 
 
-Commit and push:
+## 🤝 Contributing
 
-git commit -am "Add feature XYZ"
-git push origin feature/my-feature
+Contributions are welcome! Please follow the standard GitHub workflow:
 
+1.  **Fork** the repository.
+2.  **Create a new branch:**
+    ```bash
+    git checkout -b feature/my-new-optimization
+    ```
+3.  **Commit and push** your changes:
+    ```bash
+    git commit -am "Feat: Implement MPMC support in SPSC ring" 
+    git push origin feature/my-new-optimization
+    ```
+4.  Open a **Pull Request** explaining your changes and performance impact.
 
-Open a Pull Request
+---
