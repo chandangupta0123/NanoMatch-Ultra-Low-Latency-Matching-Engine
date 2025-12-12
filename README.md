@@ -40,9 +40,9 @@ Optional: make for Linux/macOS
 
 Build Instructions
 
-Open a terminal or PowerShell
+Open terminal / PowerShell
 
-Navigate to the project folder:
+Navigate to project folder:
 
 cd NanoMatch-Ultra-Low-Latency-Matching-Engine
 
@@ -70,19 +70,19 @@ Windows (Visual Studio):
 cmake --build . --config Release
 
 
-The executable will be generated as:
+The executable will be:
 
 ./hft_engine on Linux/macOS
 
 hft_engine.exe on Windows
 
-Running the Engine
+Run the Engine
 ./hft_engine
 
 
 Prints periodic latency stats
 
-Press Ctrl+C to stop the program
+Press Ctrl+C to stop
 
 Features
 
@@ -103,12 +103,12 @@ Contributing
 
 Fork the repository
 
-Create a new branch for your feature/fix:
+Create a new branch:
 
 git checkout -b feature/my-feature
 
 
-Commit and push your changes:
+Commit and push:
 
 git commit -am "Add feature XYZ"
 git push origin feature/my-feature
